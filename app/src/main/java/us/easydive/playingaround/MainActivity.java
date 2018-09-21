@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
+import android.view.WindowManager;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -24,14 +26,23 @@ public class MainActivity extends AppCompatActivity {
 
     public static String History = "\n --- Begin History --- \n";
 
+    public static List <String> stringList = new ArrayList<String>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        /*prevents keyboard from popping up
+        automatically on start*/
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Assigns the array list to the text suggestion.
+        AutoCompleteTextView autoComplete = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+        AutoSuggestAdapter adapter = new AutoSuggestAdapter(this, android.R.layout.simple_list_item_1, stringList);
+        autoComplete.setAdapter(adapter);
 
     }
 
@@ -68,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void showHistory(View view){
         Intent intent = new Intent(this, valveHistory.class);
-        EditText editText = (EditText) findViewById(R.id.editText);
+        AutoCompleteTextView editText = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
         String message = editText.getText().toString();
         intent.putExtra(SHOW_HISTORY, message);
         startActivity(intent);

@@ -43,6 +43,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/myCoordinatorLayout"
         xmlns:android="http://schemas.android.com/apk/res/android"

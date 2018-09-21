@@ -10,6 +10,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
 import java.text.SimpleDateFormat;
@@ -47,6 +48,7 @@ public class NewStore extends AppCompatActivity {
             MainActivity.History += "Created new store: " + message + "\n" + format + "\n\n";
             Intent intent = new Intent(this, MessageDisplay.class);
             String error = "New store created! : \"" + message + "\".\n";
+            MainActivity.stringList.add(temp.getStoreID());
             intent.putExtra(SEND_TEXT, error);
             startActivity(intent);
         }

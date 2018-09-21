@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
 import java.text.SimpleDateFormat;
@@ -20,6 +21,10 @@ public class NewValve extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_valve);
+
+        AutoCompleteTextView autoComplete = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+        AutoSuggestAdapter adapter = new AutoSuggestAdapter(this, android.R.layout.simple_list_item_1, MainActivity.stringList);
+        autoComplete.setAdapter(adapter);
     }
     public void goBack(View view){
         Intent intent = new Intent(this, MainActivity.class);
@@ -29,7 +34,7 @@ public class NewValve extends AppCompatActivity {
     public static String SEND_TEXT = "";
 
     public void createValve( View view ){
-        EditText editText1 = findViewById(R.id.editText);
+        AutoCompleteTextView editText1 = findViewById(R.id.autoCompleteTextView);
         EditText editText2 = findViewById(R.id.editText2);
         String store = editText1.getText().toString();
         String valve = editText2.getText().toString();

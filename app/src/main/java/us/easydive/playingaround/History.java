@@ -1,7 +1,7 @@
 /*
 Created by: Daniel Delgado
 This activity displays the activity which shows all user actions that change data on the app (new store/valve/fills)
-9/14/2018//
+9/14/2018
 */
 package us.easydive.playingaround;
 
